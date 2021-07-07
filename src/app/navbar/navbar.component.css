@@ -1,0 +1,24 @@
+span.cart-count {
+    color: white;
+    position: absolute;
+    text-align: center;
+    right: 0;
+    left: 0;
+    font-size: 13px;
+}
+
+.count-pos{
+
+    position: relative;
+    top: -18px;
+    left: -13px;
+}
+
+.cart-pos {
+	position: relative;
+}
+
+.active{
+    color: blue !important;
+    font-size: 18px;
+}

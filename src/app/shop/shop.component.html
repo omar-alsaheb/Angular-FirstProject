@@ -1,0 +1,57 @@
+<div class="row mt-5">
+  <div class="col-md-3">
+    <ul class="list-group">
+      <h3>Category</h3>
+      <li class="list-group-item" aria-current="true" *ngFor="let i of category"
+        [class.active]="i.id === this.selectedCategory" (click)="onSelectedCategory(i.id)">
+        {{ i.name }}
+      </li>
+    </ul>
+
+    <ul class="list-group mt-5">
+      <h3>Brands</h3>
+      <li class="list-group-item" aria-current="true" *ngFor="let i of brands" [class.active]="i.id === selectedBrand"
+        (click)="onSelectedBradns(i.id)">
+        {{ i.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <div class="d-flex justify-content-between align-items-center mb-4 ">
+      <header>
+        Showing <strong>{{ productCount }}</strong> Result
+      </header>
+      <div class="form-inline my-2 my-lg-0 mt-4" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" #search aria-label="Search" (keyup.enter)="onKeyEnter()">
+        <button class="btn btn-outline-success my-2 my-sm-0 ml-3" type="button" (click)="onSearch()">
+          Search
+        </button>
+        <button class="btn btn-outline-primary my-2 my-sm-0 ml-3" type="button" (click)="onRest()">
+          Rest
+        </button>
+      </div>
+    </div>
+    <div class="album py-5 ">
+      <div class="container">
+        <div class="row">
+          <!-- Large modal -->
+
+
+
+          <ng-template [ngIf]="productCondition">
+            <div class="bg-light">No Products</div>
+          </ng-template>
+       
+         
+          <!-- <div [ngIf]="productCondition">sadadasd</div> -->
+          <div class="col-md-4 mb-4" *ngFor="let item of products">
+
+            <app-product-item [productItem]="item"></app-product-item>
+
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

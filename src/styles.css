@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+.container-1920 {
+    max-width: 1920px;
+    padding: 0px 5%;
+    margin: 0 auto;
+    display: inline-block;
+    width: 100%;
+}
+
+.wrapper {
+    max-width: 1920px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
