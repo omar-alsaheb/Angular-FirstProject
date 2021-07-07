@@ -109,5 +109,6 @@ export class ShopComponent implements OnInit {
   onKeyEnter() {
     this.productCondition = false;
     this.onSearch();
+    // this.onSearch();
   }
 }
