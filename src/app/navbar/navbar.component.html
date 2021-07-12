@@ -8,11 +8,15 @@
         <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Home <span class="sr-only">(current)</span></a>
         <a class="nav-link" routerLink="shop" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Shop</a>
         <a class="nav-link"routerLink="login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Login</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Signup</a>
+        <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Signup</a>
       </div>
     </div>
-    <div class="cart-pos">
+    <div class="cart-pos" >
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" #search1 aria-label="Search" >
+      <button class="btn btn-outline-success my-2 my-sm-0 ml-3" type="button"  (click)="onSearch1()"> Search </button>
+    
+     
         <i class="fas fa-shopping-cart fa-2x"></i>
-        <i class="fas fa-circle fa-lg count-pos"><span class="cart-count">5</span></i>
+        <i class="fas fa-circle fa-lg count-pos"><span class="cart-count" *ngIf="(basket$ | async) as basket">{{basket.items.length}}</span></i>
     </div>
   </nav>

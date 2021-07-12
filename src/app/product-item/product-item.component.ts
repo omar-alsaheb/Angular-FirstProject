@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../models/product';
+import { BasketService } from '../service/basket.service';
 
 @Component({
   selector: 'app-product-item',
@@ -11,12 +12,15 @@ export class ProductItemComponent implements OnInit {
 
   @Input() productItem: IProduct;
 
-  constructor() {}
+  constructor(private _basketService:BasketService) {}
 
   ngOnInit(): void {
- 
+
   }
 
+  onAddToCart(){
+    this._basketService.onAddItemToCart(this.productItem);
+  }
   // onclick(productId:number){
   //  this.selectedItem=productId;
   //  alert(this.selectedItem)
