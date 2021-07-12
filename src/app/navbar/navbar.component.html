@@ -16,7 +16,7 @@
       <button class="btn btn-outline-success my-2 my-sm-0 ml-3" type="button"  (click)="onSearch1()"> Search </button>
     
      
-        <i class="fas fa-shopping-cart fa-2x"></i>
+        <i class="fas fa-shopping-cart fa-2x" routerLink="/cart" style="cursor: pointer;"></i>
         <i class="fas fa-circle fa-lg count-pos"><span class="cart-count" *ngIf="(basket$ | async) as basket">{{basket.items.length}}</span></i>
     </div>
   </nav>

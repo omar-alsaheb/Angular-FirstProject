@@ -16,7 +16,7 @@ export class BasketService {
   constructor(private http: HttpClient) {}
 
   getBasket(id: string) {
-    return this.http.get(this.baseUrl + 'Bakset?Id=' + id).pipe(
+    return this.http.get(this.baseUrl + 'Basket?id=' + id).pipe(
       map((response: any) => {
         this.basketSource.next(response);
       })
@@ -24,11 +24,9 @@ export class BasketService {
   }
 
   setBasket(basket: IBasket) {
-    
     return this.http.post<IBasket>(this.baseUrl + 'Basket', basket).subscribe(
       (response: IBasket) => {
         this.basketSource.next(response);
-        
       },
       (error) => {
         console.log(error);
@@ -80,5 +78,28 @@ export class BasketService {
       quantity: 1,
       pictureUrl: item.pictureUrl,
     };
+  }
+
+  removeItemFromCart(item: ItemBasket) {
+    const basket = this.getCurrentBasketValue();
+    if (basket.items.some((i) => i.id === item.id)) {
+      basket.items = basket.items.filter((i) => i.id !== item.id);
+
+      if (basket.items.length > 0) {
+        this.setBasket(basket);
+      } else {
+        this.deleteBasket(basket);
+      }
+    }
+  }
+  deleteBasket(basket: IBasket) {
+    this.http.delete(this.baseUrl + 'Basket?id=' + basket.id).subscribe(
+      () => {
+        this.basketSource.next(null);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
