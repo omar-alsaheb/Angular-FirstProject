@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Basket } from '../models/basket';
+import { IUser } from '../models/user';
+import { AccountService } from '../service/account.service';
 import { BasketService } from '../service/basket.service';
 import { SearchService } from '../service/search.service';
 
@@ -12,7 +14,9 @@ import { SearchService } from '../service/search.service';
 export class NavbarComponent implements OnInit {
   searchResciver: any;
   basket$:Observable<Basket>;
-  constructor(private _SearchService: SearchService,private basketService:BasketService) {}
+
+  currentUser$:Observable<IUser>
+  constructor(private _SearchService: SearchService,private basketService:BasketService,private accountService:AccountService) {}
 
 
 
@@ -20,6 +24,7 @@ export class NavbarComponent implements OnInit {
     // this._SearchService.onSearch();
     // this._SearchService.getProducts();
     this.basket$ = this.basketService.basket$;
+    this.currentUser$ = this.accountService.currentUserSource$;
 
   }
 
@@ -33,5 +38,8 @@ export class NavbarComponent implements OnInit {
 
     // this._SearchService.getProducts();
     // this._SearchService.alertmes();
+  }
+  logut(){
+    this.accountService.logout();
   }
 }

@@ -12,7 +12,7 @@ export class ShopService {
 
   baseUrl = 'https://localhost:44379/api/';
 
-  getProducts(search: string, brandId?: number, categoryId?: number) {
+  getProducts(search?: string, brandId?: number, categoryId?: number) {
     let params = new HttpParams();
     if (search) {
       params = params.append('searchTerm', search);
@@ -28,15 +28,17 @@ export class ShopService {
 
     return this.http.get<IProduct[]>(this.baseUrl + 'Product', { params });
   }
-  getProductId(id:number){
-    return this.http.get<IProduct>(this.baseUrl + 'Product/Product/'+id);
-
-
+  getProductId(id: number) {
+    return this.http.get<IProduct>(this.baseUrl + 'Product/Product/' + id);
   }
   getCategory() {
     return this.http.get<ICategory[]>(this.baseUrl + 'Product/Category');
   }
   getBrands() {
     return this.http.get<IBrands[]>(this.baseUrl + 'Product/Brands');
+  }
+
+  deleteProductFromAdmin(id: number) {
+    return this.http.delete<IProduct>(this.baseUrl + 'Product/' + id);
   }
 }

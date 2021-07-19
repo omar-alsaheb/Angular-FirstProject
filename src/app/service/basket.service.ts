@@ -91,7 +91,7 @@ export class BasketService {
         this.deleteBasket(basket);
       }
     }
-  }
+  } 
   deleteBasket(basket: IBasket) {
     this.http.delete(this.baseUrl + 'Basket?id=' + basket.id).subscribe(
       () => {

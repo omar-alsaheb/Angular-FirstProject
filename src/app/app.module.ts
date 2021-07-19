@@ -13,7 +13,11 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { LoginComponent } from './login/login.component';
 import { BasketComponent } from './basket/basket.component';
-import { CartComponent } from './cart/cart.component'
+import { CartComponent } from './cart/cart.component';
+import { ProductAdminComponent } from './Admin/product-admin/product-admin.component';
+import { SignupComponent } from './signup/signup.component'
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddNewComponent } from './Admin/add-new/add-new.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +29,16 @@ import { CartComponent } from './cart/cart.component'
     ProductDetailsComponent,
     LoginComponent,
     BasketComponent,
-    CartComponent,   
+    CartComponent,
+    ProductAdminComponent,
+    SignupComponent,
+    AddNewComponent,   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [ShopService,ProductsService],

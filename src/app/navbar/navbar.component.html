@@ -1,22 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Angular</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <a class="navbar-brand" href="#">Angular</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home <span
+          class="sr-only">(current)</span></a>
+      <a class="nav-link" routerLink="shop" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">Shop</a>
+
+      <ng-container *ngIf="(currentUser$ | async) == null">
+        <a class="nav-link" routerLink="login" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Login</a>
+        <a class="nav-link" routerLink="signup" aria-disabled="true">Signup</a>
+      </ng-container>
+
+
+      <ng-container *ngIf="currentUser$ | async">
+        <a class="nav-link" (click)="logut()">logout</a>
+        <a class="nav-link" href="#" aria-disabled="true">{{
+          (currentUser$ | async).displayName
+          }}</a>
+      </ng-container>
+
+
+    </div>
+  </div>
+  <div class="cart-pos">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" #search1 aria-label="Search" />
+    <button class="btn btn-outline-success my-2 my-sm-0 ml-3" type="button" (click)="onSearch1()">
+      Search
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Home <span class="sr-only">(current)</span></a>
-        <a class="nav-link" routerLink="shop" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Shop</a>
-        <a class="nav-link"routerLink="login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Login</a>
-        <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Signup</a>
-      </div>
-    </div>
-    <div class="cart-pos" >
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" #search1 aria-label="Search" >
-      <button class="btn btn-outline-success my-2 my-sm-0 ml-3" type="button"  (click)="onSearch1()"> Search </button>
-    
-     
-        <i class="fas fa-shopping-cart fa-2x" routerLink="/cart" style="cursor: pointer;"></i>
-        <i class="fas fa-circle fa-lg count-pos"><span class="cart-count" *ngIf="(basket$ | async) as basket">{{basket.items.length}}</span></i>
-    </div>
-  </nav>
+
+    <i class="fas fa-shopping-cart fa-2x" routerLink="/cart" style="cursor: pointer"></i>
+    <i class="fas fa-circle fa-lg count-pos"><span class="cart-count" *ngIf="basket$ | async as basket">{{
+        basket.items.length
+        }}</span></i>
+  </div>
+</nav>

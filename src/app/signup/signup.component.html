@@ -1,0 +1,24 @@
+<form class="form-signin" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal">Signup</h1>
+    </div>
+  
+    <div class="form-label-group">
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email" autofocus="">
+      <label for="inputEmail">Email address</label>
+      <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">plz enter valid email</span>
+    </div>
+  
+    <div class="form-label-group">
+        <input type="email" id="inputEmasil" class="form-control" placeholder="User name" formControlName="userName" autofocus="">
+        <label for="inputEmail">User name</label>
+      </div>
+    <div class="form-label-group">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password">
+      <label for="inputPassword">Password</label>
+    </div>
+  
+
+    <button class="btn btn-lg btn-primary btn-block"  type="submit" [disabled]="!signupForm.valid" >Signup</button>
+
+  </form>

@@ -1,0 +1,77 @@
+<div class="container mt-2">
+  <div>
+    <div class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 py-5 mb-1">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="border-0 bg-light" scope="col">
+                      <div class="p-2 px-3 text-uppercase">Product name</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="py-2 text-uppercase">Price</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="py-2 text-uppercase">Quantity</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="py-2 text-uppercase">Total</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="py-2 text-uppercase">Action</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let itme of product">
+                    <th scope="row">
+                      <div class="p-2">
+                        <a routerLink="/shop/Product/{{ itme.id }}">{{itme.id}}</a>
+                        <img src="{{ itme.pictureUrl }}" alt="https://localhost:44379/images/products/boot-redis1.png "
+                          class="img-fluid" style="max-height: 50px" />
+                        <div class="ml-3 d-inline-block align-middle">
+                          <h5 class="mb-0">
+                            <a routerLink="/shop/Product/{{ itme.id }}" class="text-dark">
+                              {{ itme.name }}
+                            </a>
+                          </h5>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="align-middle">
+                      <strong>{{ itme.price | currency }}</strong>
+                    </td>
+                    <td class="align-middle">
+                      <div class="d-flex align-items-center">
+                        <span class="font-weight-bold" style="font-size: 1.5em">q
+                        </span>
+                      </div>
+                    </td>
+                    <td class="align-middle">
+                      <strong></strong>
+                    </td>
+                    <td class="align-middle text-center">
+                      <a>
+                        <i class="fas fa-edit" style="
+                                font-size: 2em;
+                                cursor: pointer;
+                                margin-right: 10px;
+                              "></i></a>
+                      <a class="text-danger">
+                        <i class="fa fa-trash" style="font-size: 2em; cursor: pointer" (click)="removeItem(itme)" ></i>
+                      </a>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

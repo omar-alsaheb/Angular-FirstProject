@@ -14,6 +14,7 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   onLoadPost: any;
+  checkPost=true;
 
   ngOnInit(): void {
     this.onLoadProduct();
@@ -25,6 +26,10 @@ export class ProductDetailsComponent implements OnInit {
     this._shopService.getProductId(this.route.snapshot.params['id']).subscribe(
       (response: IProduct) => {
         this.onLoadPost = response;
+        if(response == null){
+          this.checkPost = false;
+        }
+        // console.log(response)
       },
 
       (error) => {
